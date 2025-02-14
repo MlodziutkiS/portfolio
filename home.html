@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d show</title>
+    <style>
+        main {
+	height: 480px;
+	width: 480px;
+	transform-style: preserve-3d;
+	position: relative;
+	}
+
+	main * {
+	position: absolute;
+	width: 480px;
+	height: 480px;
+	}
+	.front{
+		background-image: url("./grassSide");
+		transform: translateZ(240px);
+	}
+	.sideL{
+		background-image: url("./grassSide");
+		transform: translateX(-240px) rotateY(-90deg);
+	}
+	.sideR{
+		background-image: url("./grassSide");
+		transform: translateX(240px) rotateY(90deg);
+	}
+	.top{
+		background-image: url("./grassTop");
+		transform: translateY(-240px) rotateX(90deg);
+	}
+	.bottom{
+		background-image: url("./grassBottom");
+		transform: translateY(240px) rotateX(-90deg);
+	}
+	.back{
+		background-image: url("./grassSide");
+		transform: translateZ(-240px);
+	}
+	@keyframes rotate-cube{
+	0% { transform: rotateX(45deg) rotateY(45deg);}
+	25% { transform: rotateX(-45deg) rotateY(45deg);}
+	50% { transform: rotateX(-45deg) rotateY(-45deg);}
+	75% { transform: rotateX(45deg) rotateY(-45deg);}
+	100% { transform: rotateX(45deg) rotateY(45deg);}
+	}
+	main{
+		animation: rotate-cube 20s infinite linear;
+	}
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="front"></div>
+		<div class="sideL"></div>
+        <div class="sideR"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+		<div class="back"></div>
+    </main> 
+
+</body>
+</html>
