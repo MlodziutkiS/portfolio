@@ -48,6 +48,28 @@
         button:hover{
             background-color: #444;
         }
+        .container {
+	        height: 480px;
+	        width: 480px;
+	        transform-style: preserve-3d;
+	        position: relative;
+	    }
+
+	    .container * {
+	        position: absolute;
+	        width: 480px;
+	        height: 480px;
+	    }
+        @keyframes rotate-cube{
+	0% { transform: rotateX(45deg) rotateY(45deg);}
+	25% { transform: rotateX(-45deg) rotateY(45deg);}
+	50% { transform: rotateX(-45deg) rotateY(-45deg);}
+	75% { transform: rotateX(45deg) rotateY(-45deg);}
+	100% { transform: rotateX(45deg) rotateY(45deg);}
+	}
+	.container{
+		animation: rotate-cube 20s infinite linear;
+	}
     </style>
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/htmx-ext-preload@2.1.0/preload.js"></script>
@@ -55,12 +77,12 @@
 </head>
 <body>
     <main>
-        <nav>
-            <button>Home</button>
-            <button>About</button>
+        <nav hx-ext="preload">
+            <button hx-get="/home" hx-target="#insertable" preload="mouseover" preload-images="true">Home</button>
+            <button hx-get="/about" hx-target="#insertable" preload="mouseover" preload-images="true" >About</button>
             <aside>
                 <button>Theme</button>
-                <button>Contact me!</button>
+                <button hx-target="#insertable" preload="mouseover" preload-images="true">Contact me!</button>
             </aside>
         </nav>
         <div id="insertable">
